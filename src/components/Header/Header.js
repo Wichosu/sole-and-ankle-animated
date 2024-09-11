@@ -20,12 +20,30 @@ const Header = () => {
           <Logo />
         </LogoWrapper>
         <DesktopNav>
-          <NavLink href="/sale">Sale</NavLink>
-          <NavLink href="/new">New&nbsp;Releases</NavLink>
-          <NavLink href="/men">Men</NavLink>
-          <NavLink href="/women">Women</NavLink>
-          <NavLink href="/kids">Kids</NavLink>
-          <NavLink href="/collections">Collections</NavLink>
+          <NavLink href="/sale">
+            <NavLinkSpanLight>Sale</NavLinkSpanLight>
+            <NavLinkSpanBold>Sale</NavLinkSpanBold>
+          </NavLink>
+          <NavLink href="/new">
+            <NavLinkSpanLight>New&nbsp;Releases</NavLinkSpanLight>
+            <NavLinkSpanBold>New&nbsp;Releases</NavLinkSpanBold>
+          </NavLink>
+          <NavLink href="/men">
+            <NavLinkSpanLight>Men</NavLinkSpanLight>
+            <NavLinkSpanBold>Men</NavLinkSpanBold>
+          </NavLink>
+          <NavLink href="/women">
+            <NavLinkSpanLight>Women</NavLinkSpanLight>
+            <NavLinkSpanBold>Women</NavLinkSpanBold>
+          </NavLink>
+          <NavLink href="/kids">
+            <NavLinkSpanLight>Kids</NavLinkSpanLight>
+            <NavLinkSpanBold>Kids</NavLinkSpanBold>
+          </NavLink>
+          <NavLink href="/collections">
+            <NavLinkSpanLight>Collections</NavLinkSpanLight>
+            <NavLinkSpanBold>Collections</NavLinkSpanBold>
+          </NavLink>
         </DesktopNav>
         <MobileActions>
           <ShoppingBagButton>
@@ -115,15 +133,40 @@ const Filler = styled.div`
 `;
 
 const NavLink = styled.a`
+  position: relative;
   font-size: 1.125rem;
   text-transform: uppercase;
   text-decoration: none;
   color: var(--color-gray-900);
   font-weight: ${WEIGHTS.medium};
+  overflow: hidden;
 
   &:first-of-type {
     color: var(--color-secondary);
   }
+
+`;
+
+const NavLinkSpan = styled.span`
+  display: block;
+  will-change: transform;
+  transition: transform 300ms ease;
+  margin: 0;
+
+  ${NavLink}:hover & {
+    transition: transform 300ms ease;
+    transform: translateY(-100%);
+  }
+`;
+
+const NavLinkSpanLight = styled(NavLinkSpan)`
+  font-weight: ${WEIGHTS.medium};
+
+`;
+
+const NavLinkSpanBold = styled(NavLinkSpan)`
+  position: absolute;
+  font-weight: ${WEIGHTS.bold};
 `;
 
 export default Header;
